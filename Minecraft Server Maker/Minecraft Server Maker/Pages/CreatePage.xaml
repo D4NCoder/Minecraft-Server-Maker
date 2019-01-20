@@ -1,0 +1,439 @@
+﻿<Page x:Class="Minecraft_Server_Maker.CreatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Minecraft_Server_Maker"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="CreatePage" Height="645" Width="833">
+    
+
+    <Page.Resources>
+        
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="Transparent" BorderBrush="#007D8683" BorderThickness="1"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                            <Label x:Name="WaterMarkLabel" HorizontalAlignment="Center" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="MineCrafter 3" Height="30" Width="327" Background="#00CB4B4B" Margin="0,13" FontSize="22" HorizontalContentAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ModernTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <ControlTemplate.Triggers>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="CheckedBlue" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF285AB3" Offset="0" />
+            <GradientStop Color="#FF4184EC" Offset="0.5" />
+            <GradientStop Color="#FF558BED" Offset="0.5" />
+            <GradientStop Color="#FF7DACF0" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="CheckedOrange" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF137FCA" Offset="0" />
+            <GradientStop Color="#FF0C8CF6" Offset="0.2" />
+            <GradientStop Color="#FF0C9BFE" Offset="0.2" />
+            <GradientStop Color="#FF12A6FA" Offset="0.5" />
+            <GradientStop Color="#FF1D98FF" Offset="0.5" />
+            <GradientStop Color="#FF5ABAFC" Offset="1" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="CheckedOrangeBorder" Color="#FF1B648E" />
+        <SolidColorBrush x:Key="CheckedBlueBorder" Color="#FF143874" />
+        <Style x:Key="OrangeSwitchStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="OnChecking">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="53" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="OnUnchecking">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <DockPanel x:Name="dockPanel">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True" VerticalAlignment="Center" />
+                            <Grid>
+                                <Border x:Name="BackgroundBorder" BorderBrush="#FF939393" BorderThickness="1" CornerRadius="3" Height="27" Width="94">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#FFB5B5B5" Offset="0" />
+                                            <GradientStop Color="#FFDEDEDE" Offset="0.1" />
+                                            <GradientStop Color="#FFEEEEEE" Offset="0.5" />
+                                            <GradientStop Color="#FFFAFAFA" Offset="0.5" />
+                                            <GradientStop Color="#FFFEFEFE" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Ellipse x:Name="Off" Width="14" Height="14" Stroke="#FF7A7A7A" StrokeThickness="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <Line x:Name="On" X1="0" Y1="0" X2="0" Y2="14" Stroke="#FF7A7A7A" StrokeThickness="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </Border>
+                                <Border BorderBrush="#FF939393" HorizontalAlignment="Left" x:Name="slider" Width="41" Height="27" BorderThickness="1" CornerRadius="3" RenderTransformOrigin="0.5,0.5" Margin="0">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            <SkewTransform AngleX="0" AngleY="0" />
+                                            <RotateTransform Angle="0" />
+                                            <TranslateTransform X="0" Y="0" />
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF0F0F0" Offset="0" />
+                                            <GradientStop Color="#FFCDCDCD" Offset="0.1" />
+                                            <GradientStop Color="#FFFBFBFB" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                            </Grid>
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OnUnchecking}" x:Name="OnUnchecking_BeginStoryboard" />
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OnChecking}" x:Name="OnChecking_BeginStoryboard" />
+                                </Trigger.EnterActions>
+                                <Setter TargetName="On" Property="Stroke" Value="White" />
+                                <Setter TargetName="Off" Property="Stroke" Value="White" />
+                                <!-- Change Orange or Blue color here -->
+                                <Setter TargetName="BackgroundBorder" Property="Background" Value="{StaticResource CheckedOrange}" />
+                                <Setter TargetName="BackgroundBorder" Property="BorderBrush" Value="{StaticResource CheckedOrangeBorder}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <!-- ToDo: Add Style for Isenabled == False -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Color x:Key="ControlForeground">#181818</Color>
+        <Color x:Key="ControlReadOnlyForeground">#383838</Color>
+        <Color x:Key="ControlDisabledForeground">#686868</Color>
+
+        <Color x:Key="ControlBackground">#f7f7f9</Color>
+        <Color x:Key="ControlHoveredBackground">#fafafc</Color>
+        <Color x:Key="ControlFocusedBackground">#fdfdff</Color>
+        <Color x:Key="ControlReadOnlyBackground">#f2f2f4</Color>
+        <Color x:Key="ControlDisabledBackground">#efeff2</Color>
+
+        <Color x:Key="ControlBorder">#383838</Color>
+        <Color x:Key="ControlHoveredBorder">#0BBAE0</Color>
+        <Color x:Key="ControlFocusedBorder">#000000</Color>
+        <Color x:Key="ControlReadOnlyBorder">#484848</Color>
+        <Color x:Key="ControlDisabledBorder">#787878</Color>
+
+        <!-- creating a control template for TextBox -->
+        <ControlTemplate x:Key="TextBoxTemplateBase" TargetType="{x:Type TextBox}">
+            <Grid x:Name="root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                <!-- managing visual states to change controls styles on different states -->
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <Storyboard>
+                                <DoubleAnimation BeginTime="00:00:00.000" Duration="00:00:00.500"
+                                             From="1" To="0"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Storyboard.TargetName="hoverBorder"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <DoubleAnimation BeginTime="00:00:00.000" Duration="00:00:00.500"
+                                             From="0" To="1"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Storyboard.TargetName="hoverBorder"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="normalBorder"
+                                                          Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                    <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ControlDisabledBackground}" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="normalBorder"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                    <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ControlDisabledBorder}" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="ReadOnly">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="normalBorder"
+                                                          Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                    <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ControlReadOnlyBackground}" />
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="normalBorder"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                    <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ControlReadOnlyBorder}" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="FocusStates">
+                        <VisualState x:Name="Focused">
+                            <Storyboard>
+                                <DoubleAnimation BeginTime="00:00:00.000" Duration="00:00:00.300"
+                                             From="0" To="1"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Storyboard.TargetName="focusBorder"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Unfocused">
+                            <Storyboard>
+                                <DoubleAnimation BeginTime="00:00:00.000" Duration="00:00:00.700"
+                                             From="1" To="0"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Storyboard.TargetName="focusBorder"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+                <!-- main border, styling the border-brush and background for Normal state -->
+                <Border x:Name="normalBorder" 
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"/>
+
+                <!-- styling border-brush and background-color for MouseOver state -->
+                <Border x:Name="hoverBorder" Opacity="0"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border.BorderBrush>
+                        <SolidColorBrush Color="{StaticResource ControlHoveredBorder}"/>
+                    </Border.BorderBrush>
+                    <Border.Background>
+                        <SolidColorBrush Color="{StaticResource ControlHoveredBackground}"/>
+                    </Border.Background>
+                </Border>
+
+                <!-- styling border-brush and background-color for Focused state -->
+                <Border x:Name="focusBorder" Opacity="0"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border.BorderBrush>
+                        <SolidColorBrush Color="{StaticResource ControlFocusedBorder}"/>
+                    </Border.BorderBrush>
+                    <Border.Background>
+                        <SolidColorBrush Color="{StaticResource ControlFocusedBackground}"/>
+                    </Border.Background>
+                </Border>
+
+                <!-- TextBox uses a ScrollViewer named PART_ContentHost as its content-presenter -->
+                <ScrollViewer x:Name="PART_ContentHost"
+                          Padding="{TemplateBinding Padding}"
+                          BorderThickness="0" 
+                          IsTabStop="False" 
+                          Margin="2" 
+                          Background="{x:Null}"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource ControlDisabledForeground}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsReadOnly" Value="True">
+                    <Setter Property="Foreground">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource ControlReadOnlyForeground}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid x:Name="CreatingSection" HorizontalAlignment="Left" Height="546" VerticalAlignment="Top" Width="829">
+            <Image HorizontalAlignment="Left" Height="75" Margin="33,24,0,0" VerticalAlignment="Top" Width="75" Source="Images/Server_ICON.png" RenderTransformOrigin="0,0"/>
+            <TextBox x:Name="ServerName_Textbox" Style="{StaticResource MyWaterMarkStyle}" Tag="[ENTER] SERVER NAME" Margin="131,34,104,450" BorderBrush="#00ABADB3" RenderTransformOrigin="0.5,0" FontFamily="MineCrafter 3" FontSize="24" Foreground="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Rectangle HorizontalAlignment="Left" Height="4" Stroke="#005DA6FF" VerticalAlignment="Top" Width="594" Margin="131,80,0,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF5CCDF7" Offset="0"/>
+                        <GradientStop Color="#FF68A83D" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <GroupBox Header="Config" HorizontalAlignment="Center" Height="410" Margin="336,136,0,0" VerticalAlignment="Top" Width="493" FontSize="20" Foreground="#FFB2B2B2" FontFamily="Minecraftia" BorderBrush="#FFC1C1C1" Background="#00BBBBBB">
+                <Grid x:Name="GroupBox_Content" HorizontalAlignment="Left" Height="373" VerticalAlignment="Top" Width="483" Margin="0,0,-2,-1">
+                    <ScrollViewer x:Name="Scrollview1" HorizontalAlignment="Left" Height="353" Margin="10,10,0,0" VerticalAlignment="Top" Width="463">
+                        <Grid x:Name="Content" Height="527" Width="430">
+                            <Grid x:Name="WorldName" Height="45" VerticalAlignment="Top" Margin="10,26,59,0">
+                                <Label x:Name="WorldName_Title" Content="World's name:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <TextBox x:Name="WorldName_Textbox" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Margin="155,10,0,0" Background="#FFA8A8A8" FontSize="18" HorizontalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" BorderBrush="#FFB0B0B2" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid x:Name="IPAdress" Height="45" VerticalAlignment="Top" Margin="10,71,59,0">
+                                <Label x:Name="IPAdress_Title" Content="IP Adress:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <TextBox x:Name="IPAdress_Textbox" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Margin="155,10,0,0" Background="#FF747474" FontSize="18" HorizontalContentAlignment="Center" Foreground="White" IsEnabled="False" BorderBrush="#FFB0B0B2" Text="127.0.0.1" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid x:Name="ServerPort" Height="45" VerticalAlignment="Top" Margin="10,121,59,0">
+                                <Label x:Name="ServerPort_Title" Content="Server port:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <TextBox x:Name="ServerPort_Textbox" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Margin="155,10,0,0" Background="#FFA8A8A8" FontSize="18" HorizontalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" BorderBrush="#FFB0B0B2" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <Grid x:Name="MaxPlayers" Height="45" VerticalAlignment="Top" Margin="10,171,59,0">
+                                <Label x:Name="MaxPlayers_Title" Content="Max Players:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <TextBox x:Name="MaxPlayers_Textbox" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Margin="155,10,0,0" Background="#FFA8A8A8" FontSize="18" HorizontalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" BorderBrush="#FFB0B0B2" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <GridSplitter HorizontalAlignment="Left" Height="408" VerticalAlignment="Top" Width="3" Margin="215,30,0,0" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+                                <GridSplitter.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </GridSplitter.RenderTransform>
+                            </GridSplitter>
+                            <CheckBox x:Name="PVP_Checkbox" Style="{DynamicResource OrangeSwitchStyle}" Content="PVP " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,262,0,0" Foreground="#FFD4D4D4" FontSize="16" FontFamily="Minecraftia" Width="140" IsChecked="True"/>
+                            <CheckBox x:Name="Flight_Checkbox" Style="{DynamicResource OrangeSwitchStyle}" Content="Flight " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="258,311,0,0" Foreground="#FFD4D4D4" FontSize="16" FontFamily="Minecraftia" Width="162" IsChecked="True"/>
+                            <CheckBox x:Name="SpawnMonsters_Checkbox" Style="{DynamicResource OrangeSwitchStyle}" Content="Monsters " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,311,0,0" Foreground="#FFD4D4D4" FontSize="16" FontFamily="Minecraftia" Width="197" IsChecked="True"/>
+                            <CheckBox x:Name="SpawnAnimals_Checkbox" Style="{DynamicResource OrangeSwitchStyle}" Content="Animals " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,262,0,0" Foreground="#FFD4D4D4" FontSize="16" FontFamily="Minecraftia" Width="175" IsChecked="True"/>
+                            <GridSplitter HorizontalAlignment="Left" Height="408" VerticalAlignment="Top" Width="3" Margin="215,153,0,0" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+                                <GridSplitter.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </GridSplitter.RenderTransform>
+                            </GridSplitter>
+                            <Grid x:Name="Seed" Height="45" VerticalAlignment="Top" Margin="10,372,59,0">
+                                <Label x:Name="Seed_Title" Content="Seed:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <TextBox x:Name="Seed_Textbox" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Center" Width="206" Margin="155,10,0,0" Background="#FFA8A8A8" FontSize="18" HorizontalContentAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" BorderBrush="#FFB0B0B2"/>
+                            </Grid>
+                            <Grid x:Name="Difficulty" Height="45" VerticalAlignment="Top" Margin="10,422,59,0">
+                                <Label x:Name="Difficulty_Title" Content="Difficulty:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <ComboBox x:Name="Difficulty_Combobox" HorizontalAlignment="Left" Margin="156,7,0,0" VerticalAlignment="Top" Width="112" Height="36" SelectedIndex="1" FontFamily="Minecraftia" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14">
+                                    <ComboBoxItem Content="Peacefull" FontFamily="Minecraftia"/>
+                                    <ComboBoxItem Content="Easy" FontFamily="Minecraftia"/>
+                                    <ComboBoxItem Content="Medium" FontFamily="Minecraftia"/>
+                                    <ComboBoxItem Content="Hard" FontFamily="Minecraftia"/>
+                                </ComboBox>
+                            </Grid>
+                            <Grid x:Name="Gamemode" Height="45" VerticalAlignment="Top" Margin="10,472,59,0">
+                                <Label x:Name="Gamemode_Title" Content="Gamemode:" HorizontalAlignment="Left" Margin="0,10,0,-2" VerticalAlignment="Top" Height="36" Width="134" Foreground="#FFD4D4D4" FontFamily="Minecraftia" FontSize="14" HorizontalContentAlignment="Right"/>
+                                <ComboBox x:Name="Gamemode_Combobox" HorizontalAlignment="Left" Margin="156,7,0,0" VerticalAlignment="Top" Width="112" Height="36" SelectedIndex="0" FontFamily="Minecraftia" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14">
+                                    <ComboBoxItem Content="Survival" FontFamily="Minecraftia"/>
+                                    <ComboBoxItem Content="Creative" FontFamily="Minecraftia"/>
+                                    <ComboBoxItem Content="Adventure" FontFamily="Minecraftia"/>
+                                    <ComboBoxItem Content="Spectator" FontFamily="Minecraftia"/>
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </GroupBox>
+            <ComboBox x:Name="Type_Combobox" HorizontalAlignment="Left" Margin="24,182,0,0" VerticalAlignment="Top" Width="112" Height="36" SelectedIndex="0" FontFamily="Minecraftia" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="Type_Combobox_SelectionChanged">
+                <ComboBoxItem Content="Vanilla" FontFamily="Minecraftia"/>
+                <ComboBoxItem Content="Plugins" FontFamily="Minecraftia"/>
+            </ComboBox>
+            <Label x:Name="Type_Title" Content="Type" HorizontalAlignment="Left" Margin="54,146,0,0" VerticalAlignment="Top" Height="36" Width="54" Foreground="White" FontFamily="Minecraftia" FontSize="14"/>
+            <ComboBox x:Name="Version_Combobox" HorizontalAlignment="Left" FontFamily="Minecraftia" SelectedIndex="0" Margin="184,182,0,328" Width="112" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14">
+                <ComboBoxItem Content="1.2.5" FontFamily="Minecraftia"/>
+                <ComboBoxItem Content="1.6.1" FontFamily="Minecraftia"/>
+            </ComboBox>
+            <Label x:Name="Version_Title" Content="Version" HorizontalAlignment="Left" Margin="200,146,0,0" VerticalAlignment="Top" Height="36" Width="78" Foreground="White" FontFamily="Minecraftia" FontSize="14"/>
+            <Separator HorizontalAlignment="Left" Height="40" Margin="0,223,0,0" VerticalAlignment="Top" Width="336" Background="White"/>
+            <Grid x:Name="VanillaContent" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="331" Margin="0,246,0,0">
+                <Grid x:Name="OP_Players" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,23,0,0">
+                    <Button x:Name="OPs_EditButton" Content="EDIT" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="OPs_Title" Content="OP players" HorizontalAlignment="Left" Margin="0,0,0,-3" VerticalAlignment="Top" Height="42" Width="152" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                </Grid>
+                <Grid x:Name="Whitelist" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,70,0,0">
+                    <Button x:Name="Whitelist_EditButton" Content="EDIT" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="Whitelist_Title" Content="White-list" HorizontalAlignment="Left" Margin="0,0,0,-3" VerticalAlignment="Top" Height="42" Width="152" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                    <CheckBox x:Name="Whitelist_Checkbox" Content="" HorizontalAlignment="Left" Margin="-27,14,0,0" VerticalAlignment="Top" Height="16" Width="16"/>
+                </Grid>
+                <Grid x:Name="Save" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,224,0,0">
+                    <Button x:Name="Save_PickButton" Content="PICK" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="Save_Title" Content="Save [NONE]" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="162" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="PluginsContent" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="331" Margin="0,246,0,0">
+                <Grid x:Name="OP_Players1" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,23,0,0">
+                    <Button x:Name="OPs_EditButton1" Content="EDIT" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="OPs_Title1" Content="OP players" HorizontalAlignment="Left" Margin="0,0,0,-3" VerticalAlignment="Top" Height="42" Width="152" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                </Grid>
+                <Grid x:Name="Whitelist1" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,70,0,0">
+                    <Button x:Name="Whitelist_EditButton1" Content="EDIT" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="Whitelist_Title1" Content="White-list" HorizontalAlignment="Left" Margin="0,0,0,-3" VerticalAlignment="Top" Height="42" Width="152" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                    <CheckBox x:Name="Whitelist_Checkbox1" Content="" HorizontalAlignment="Left" Margin="-27,14,0,0" VerticalAlignment="Top" Height="16" Width="16"/>
+                </Grid>
+                <Grid x:Name="Save1" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,238,0,0">
+                    <Button x:Name="Save_PickButton1" Content="PICK" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="Save_Title1" Content="Save [NONE]" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="162" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                </Grid>
+                <Grid x:Name="Plugins" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="257" Margin="35,196,0,0">
+                    <Button x:Name="Plugins_PickButton" Content="PICK" HorizontalAlignment="Left" Margin="184,6,0,0" VerticalAlignment="Top" Width="73" Height="34" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+                    <Label x:Name="Plugins_Title" Content="Plugins" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="162" Foreground="White" FontFamily="Minecraftia" FontSize="20"/>
+                </Grid>
+            </Grid>
+            <Separator HorizontalAlignment="Left" Height="40" Margin="0,525,0,-19" VerticalAlignment="Top" Width="340" Background="White"/>
+
+        </Grid>
+
+        <Grid x:Name="Footer" HorizontalAlignment="Left" Height="65" Margin="10,579,0,0" VerticalAlignment="Top" Width="819">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="98*"/>
+                <ColumnDefinition Width="19*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Version:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,29,0,0" Foreground="#FF818181" FontStyle="Italic" FontWeight="Bold"/>
+            <Label Content="1.0 beta" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,29,0,0" Foreground="#FF818181" FontStyle="Italic"/>
+            <Label Content="© D4N__CODER" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,29,0,0" Foreground="#FF818181" Width="96" FontFamily="Arial" Grid.Column="1"/>
+        </Grid>
+        <Grid x:Name="Servers_Footer" HorizontalAlignment="Left" Height="65" Margin="10,579,0,0" VerticalAlignment="Top" Width="819">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="98*"/>
+                <ColumnDefinition Width="19*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CreateServer_Button1" Content="CREATE" HorizontalAlignment="Left" Margin="312,10,0,0" VerticalAlignment="Top" Width="205" Height="45" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="22" Click="CreateServer_Button1_Click"/>
+        </Grid>
+
+    </Grid>
+</Page>

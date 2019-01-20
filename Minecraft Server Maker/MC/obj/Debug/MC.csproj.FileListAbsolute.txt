@@ -1,0 +1,10 @@
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\bin\Debug\MC.exe.config
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\bin\Debug\MC.exe
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\bin\Debug\MC.pdb
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.csprojResolveAssemblyReference.cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.Form1.resources
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.Properties.Resources.resources
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.csproj.GenerateResource.Cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.csproj.CoreCompileInputs.cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.exe
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\MC\obj\Debug\MC.pdb

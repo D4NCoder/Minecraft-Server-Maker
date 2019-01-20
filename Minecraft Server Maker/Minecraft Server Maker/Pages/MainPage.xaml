@@ -1,0 +1,147 @@
+﻿<Page x:Class="Minecraft_Server_Maker.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Minecraft_Server_Maker"
+      mc:Ignorable="d"
+      Title="MainPage" Height="645" Width="833">
+
+    <Grid Background="#00FF0100" Margin="0,-2,-2,0" Height="650" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="196*"/>
+            <ColumnDefinition Width="136*"/>
+            <ColumnDefinition Width="509*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="MainScene" HorizontalAlignment="Left" Height="650" VerticalAlignment="Top" Width="829" Grid.ColumnSpan="4" Margin="0,0,0,-130">
+            <Grid x:Name="ContentPages" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="809" Margin="10,23,0,0">
+                <TabControl x:Name="PageSelection" HorizontalAlignment="Left" Height="535" VerticalAlignment="Top" Width="789" Background="Transparent" Margin="10,0,0,-118" SelectionChanged="PageSelection_SelectionChanged" IsManipulationEnabled="True" IsSynchronizedWithCurrentItem="True">
+                    <TabControl.Resources>
+                        <Style TargetType="{x:Type TabItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type TabItem}">
+                                        <Border x:Name="Border" BorderThickness="1,1,1,0" BorderBrush="#00DCDCDC" CornerRadius="4,4,0,0" Margin="2,0" Background="#26FFFFFF">
+                                            <ContentPresenter x:Name="ContentSite"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"
+                                                    ContentSource="Header"
+                                                    Margin="10,2"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True"/>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="#19FFFFFF" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
+
+                    <TabItem x:Name="SERVER_Tab" Header="SERVERS" BorderBrush="{x:Null}" Foreground="White">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#00F0F0F0" Offset="0"/>
+                                <GradientStop Color="#00E5E5E5" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
+
+                        <ListView x:Name ="ServerList"  Background="Transparent" Padding="20" BorderBrush="{x:Null}" BorderThickness="0,3,0,0" Foreground="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="170" Width="728">
+                                        <Image HorizontalAlignment="Left" Height="52" Margin="19,10,0,0" VerticalAlignment="Top" Source="/Images/Server_ICON.png" Width="52"/>
+                                        <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="76,17,0,0" Width="438" Height="39" FontFamily="Metro" FontSize="20" Foreground="#FF5DA6FF"/>
+                                        <Label Content="IP Adress:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,63,0,0" Width="80" Height="24" FontSize="10" Foreground="#FF447FC7" FontFamily="Minecraftia"/>
+                                        <Label Content="{Binding IPAdress}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,63,0,0" Width="135" Height="24" FontSize="10" Foreground="#FFB8B8B8" FontFamily="Minecraftia"/>
+                                        <Label Content="Max Players:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,91,0,0" Width="89" Height="26" FontSize="10" Foreground="#FF447FC7" FontFamily="Minecraftia"/>
+                                        <Label Content="{Binding MaxPlayers}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,93,0,0" Width="135" Height="26" FontSize="10" Foreground="#FFB8B8B8" FontFamily="Minecraftia"/>
+                                        <Label Content="Version:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,117,0,0" Width="89" Height="26" FontSize="10" Foreground="#FF447FC7" FontFamily="Minecraftia"/>
+                                        <Label Content="{Binding Version}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,119,0,0" Width="135" Height="26" FontSize="10" Foreground="#FFB8B8B8" FontFamily="Minecraftia"/>
+                                        <Button Content="Edit server" HorizontalAlignment="Left" Margin="548,80,0,0" VerticalAlignment="Top" Width="111" Height="20" Background="#FFA8A8A8"/>
+                                        <Button Content="Start server" HorizontalAlignment="Left" Margin="548,119,0,0" VerticalAlignment="Top" Width="111" Height="20" Background="#FFA8A8A8"/>
+                                        <Rectangle Fill="#FF5DA6FF" Stroke="#FF5DA6FF" Margin="512,56,214,5"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </TabItem>
+
+                    <TabItem x:Name="ABOUT_Tab" Header="ABOUT" BorderBrush="#00000000" Foreground="White">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#00F0F0F0" Offset="0"/>
+                                <GradientStop Color="#00E5E5E5" Offset="1"/>
+                                <GradientStop Color="#00EDEDED"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
+                        <Grid x:Name="ABOUT_content" Background="#00E5E5E5" Height="367" VerticalAlignment="Top" Margin="0,0,0,-1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="23*"/>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition Width="372*"/>
+                                <ColumnDefinition Width="376*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="Icon" Grid.Column="3" HorizontalAlignment="Left" Height="82" Margin="321,19,0,0" VerticalAlignment="Top" Width="82" Source="Images/Icon.png" Grid.ColumnSpan="2"/>
+                            <TextBlock x:Name="About_Text" Grid.Column="1" HorizontalAlignment="Left" Margin="21,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="149" Width="728" FontFamily="Minecraftia"><Run Text="This application is about.. "/><LineBreak/><Run Text="...."/><LineBreak/><Run Text="..."/><LineBreak/><Run/></TextBlock>
+                            <Label x:Name="Minecraft_Text" Content="MINECRAFT" Grid.Column="3" HorizontalAlignment="Left" Margin="26,28,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Minecraftia" Foreground="#FF865F30" Height="63" Width="253" FontWeight="Bold"/>
+                            <Label x:Name="Minecraft_Text_Copy" Content="SERVER" Grid.Column="4" HorizontalAlignment="Left" Margin="111,28,0,0" VerticalAlignment="Top" FontSize="39" FontFamily="Minecraftia" Foreground="#FF7C9618" Height="63" Width="191" FontWeight="Bold" Background="#0033363C"/>
+                            <Label x:Name="Minecraft_Text_Copy1" Content="MAKER" Grid.Column="3" HorizontalAlignment="Left" Margin="270,91,0,0" VerticalAlignment="Top" FontFamily="Minecraftia" Foreground="#FFE0D1B4" Height="81" Width="190" FontWeight="Bold" Background="#00E4E4E4" Grid.ColumnSpan="2" FontSize="48"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="SETTINGS_Tab" Header="SETTINGS" BorderBrush="#00000000" Foreground="White" Margin="569,0,-567,0">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#00F0F0F0" Offset="0"/>
+                                <GradientStop Color="#00E5E5E5" Offset="1"/>
+                                <GradientStop Color="#00EDEDED"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
+                        <Grid x:Name="ABOUT_content1" Background="#00E5E5E5" Height="367" VerticalAlignment="Top" Margin="0,0,0,-1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="23*"/>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition Width="372*"/>
+                                <ColumnDefinition Width="376*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="Icon1" Grid.Column="3" HorizontalAlignment="Left" Height="82" Margin="321,19,0,0" VerticalAlignment="Top" Width="82" Source="Images/Icon.png" Grid.ColumnSpan="2"/>
+                            <TextBlock x:Name="About_Text1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="149" Width="728" FontFamily="Minecraftia"><Run Text="This application is about.. "/><LineBreak/><Run Text="...."/><LineBreak/><Run Text="..."/><LineBreak/><Run/></TextBlock>
+                            <Label x:Name="Minecraft_Text1" Content="MINECRAFT" Grid.Column="3" HorizontalAlignment="Left" Margin="26,28,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Minecraftia" Foreground="#FF865F30" Height="63" Width="253" FontWeight="Bold"/>
+                            <Label x:Name="Minecraft_Text_Copy2" Content="SERVER" Grid.Column="4" HorizontalAlignment="Left" Margin="111,28,0,0" VerticalAlignment="Top" FontSize="39" FontFamily="Minecraftia" Foreground="#FF7C9618" Height="63" Width="191" FontWeight="Bold" Background="#0033363C"/>
+                            <Label x:Name="Minecraft_Text_Copy3" Content="MAKER" Grid.Column="3" HorizontalAlignment="Left" Margin="270,91,0,0" VerticalAlignment="Top" FontFamily="Minecraftia" Foreground="#FFE0D1B4" Height="81" Width="190" FontWeight="Bold" Background="#00E4E4E4" Grid.ColumnSpan="2" FontSize="48"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <Grid x:Name="Footer" HorizontalAlignment="Left" Height="65" Margin="10,579,0,-134" VerticalAlignment="Top" Width="819">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="98*"/>
+                    <ColumnDefinition Width="19*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Version:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,29,0,0" Foreground="#FF818181" FontStyle="Italic" FontWeight="Bold"/>
+                <Label Content="1.0 beta" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,29,0,0" Foreground="#FF818181" FontStyle="Italic"/>
+                <Label Content="© D4N__CODER" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,31,0,0" Foreground="#FF818181" Width="97" FontFamily="Arial" Grid.Column="1"/>
+            </Grid>
+            <Grid x:Name="About_Footer" HorizontalAlignment="Left" Height="65" Margin="10,579,0,-134" VerticalAlignment="Top" Width="819">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="98*"/>
+                    <ColumnDefinition Width="19*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="CreateServer_Button" Content="CREATE" HorizontalAlignment="Left" Margin="175,10,0,0" VerticalAlignment="Top" Width="193" Height="45" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="22" Click="CreateServer_Button_Click"/>
+                <Button x:Name="Tutorial_Button" Content="TUTORIAL" HorizontalAlignment="Left" Margin="428,10,0,0" VerticalAlignment="Top" Width="193" Height="45" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="22"/>
+            </Grid>
+            <Grid x:Name="Servers_Footer" HorizontalAlignment="Left" Height="65" Margin="10,579,0,-134" VerticalAlignment="Top" Width="819">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="98*"/>
+                    <ColumnDefinition Width="19*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="CreateServer_Button1" Content="CREATE" HorizontalAlignment="Left" Margin="312,10,0,0" VerticalAlignment="Top" Width="193" Height="45" FontFamily="Minecraftia" Background="#FF898989" Foreground="White" BorderBrush="#FF3E3E3E" FontSize="22" Click="CreateServer_Button1_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

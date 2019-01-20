@@ -1,0 +1,15 @@
+﻿<Window x:Class="Minecraft_Server_Maker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Minecraft_Server_Maker"
+        mc:Ignorable="d"
+        
+        Title="Minecraft Server Maker" Background="#FF333337" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" Icon="Icon.ico" Height="678" Width="833" MinHeight="678">
+    <Grid>
+        <Frame x:Name="BasicFrame" x:FieldModifier="public" NavigationUIVisibility="Hidden">
+            
+        </Frame>
+    </Grid>
+</Window>

@@ -1,0 +1,46 @@
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\Minecraft Server Maker.exe.config
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\Minecraft Server Maker.exe
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\Minecraft Server Maker.pdb
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\MainWindow.g.cs
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\App.g.cs
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker_MarkupCompile.cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker_MarkupCompile.lref
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\MainWindow.baml
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.g.resources
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft_Server_Maker.Properties.Resources.resources
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csproj.GenerateResource.Cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csproj.CoreCompileInputs.cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.exe
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.pdb
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\MySql.Data.dll
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\MySql.Data.xml
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csprojResolveAssemblyReference.cache
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\NUnrar.dll
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\CreatePage.g.cs
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\MainPage.g.cs
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\CreatePage.baml
+C:\Users\CallM\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\MainPage.baml
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\Minecraft Server Maker.exe.config
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\Minecraft Server Maker.exe
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\Minecraft Server Maker.pdb
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\NUnrar.dll
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\bin\Debug\MySql.Data.xml
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csprojAssemblyReference.cache
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\CreatePage.g.cs
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\MainPage.g.cs
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\MainWindow.g.cs
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\App.g.cs
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker_MarkupCompile.cache
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker_MarkupCompile.lref
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\CreatePage.baml
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Pages\MainPage.baml
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\MainWindow.baml
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.g.resources
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft_Server_Maker.Properties.Resources.resources
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csproj.GenerateResource.cache
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csproj.CoreCompileInputs.cache
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.csproj.CopyComplete
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.exe
+C:\Users\Dan\source\repos\Minecraft Server Maker\Minecraft Server Maker\Minecraft Server Maker\obj\Debug\Minecraft Server Maker.pdb
